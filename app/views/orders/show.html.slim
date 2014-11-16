@@ -7,6 +7,19 @@ p
   strong Address:
   = @order.address
 
+p
+  strong Order details:
+  table.table
+    tr
+      th Item name
+      th Unit price
+      th Quantuty
+    - @order.order_details.each do |detail|
+      tr
+        td = detail.item_name
+        td = detail.unit_price
+        td = detail.quantity
+
 = link_to 'Edit', edit_order_path(@order)
 '|
 = link_to 'Back', orders_path

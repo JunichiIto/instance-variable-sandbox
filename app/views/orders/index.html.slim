@@ -5,6 +5,7 @@ table.table
     tr
       th Name
       th Address
+      th Details count
       th
       th
       th
@@ -14,6 +15,7 @@ table.table
       tr
         td = order.name
         td = order.address
+        td = order.order_details.count
         td = link_to 'Show', order
         td = link_to 'Edit', edit_order_path(order)
         td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
