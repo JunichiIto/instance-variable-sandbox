@@ -14,6 +14,8 @@ gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'slim-rails'
+gem 'nested_form'
+gem 'jquery-turbolinks'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

@@ -1,9 +1,16 @@
-= simple_form_for(@order) do |f|
+= simple_nested_form_for(@order) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
     = f.input :address
+
+    = f.fields_for :order_details do |df|
+      = df.input :item_name
+      = df.input :unit_price
+      = df.input :quantity
+      = df.link_to_remove "Remove this detail"
+    = f.link_to_add "Add a detail", :order_details
 
   .form-actions
     = f.button :submit
