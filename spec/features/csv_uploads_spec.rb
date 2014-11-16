@@ -25,7 +25,7 @@ feature 'CSV uploads', type: :feature do
   scenario '問題のあるCSVをアップロードする' do
     attach_file 'File', "#{Rails.root}/spec/factories/order_details_error.csv"
     click_button 'Import'
-    expect(page).to have_content 'Order details unit priceは数値で入力してください。'
-    expect(page).to have_content 'Order details quantityは数値で入力してください。'
+    expect(page).to have_content 'Unit priceは数値で入力してください。'
+    expect(page).to have_content 'Quantityは数値で入力してください。'
   end
 end

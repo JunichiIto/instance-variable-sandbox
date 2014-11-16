@@ -66,8 +66,10 @@ class OrdersController < ApplicationController
 
   def import_csv
     @order.read_csv(params[:file])
+    @order.save_details_from_csv
+    @result = @order.result
     respond_to do |format|
-      if @order.save_details_from_csv
+      if @result.all?{|r| r == true }
         format.html { redirect_to @order, notice: 'CSV was successfully imported.' }
       else
         format.html { render :new_csv }
