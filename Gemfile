@@ -20,6 +20,7 @@ group :development do
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'i18n_generators'
 end
 group :development, :test do
   gem 'factory_girl_rails'

@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      order: order  #g
+
+    attributes:
+      order:
+        address: address  #g
+        name: name  #g
