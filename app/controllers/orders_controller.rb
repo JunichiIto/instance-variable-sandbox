@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
 
   def import_csv
     @order.read_csv(params[:file])
-    @order.save_details_from_csv
+    @order.save_details
     @result = @order.result
     respond_to do |format|
       if @result.all?{|r| r == true }

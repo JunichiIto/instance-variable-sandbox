@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   end
 
   # 参考: http://ayaketan.hatenablog.com/entry/2014/01/26/180141
-  def save_details_from_csv
+  def save_details
     @result = []
     CSV.parse(Kconv.toutf8(@csv_text)) do |row|
       # 本来であればカラム数のチェック等を実施すべきだが、サンプルコードなのでここでは割愛する
