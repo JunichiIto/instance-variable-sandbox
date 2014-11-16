@@ -12,7 +12,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'high_voltage'
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc2'
 gem 'slim-rails'
 group :development do
   gem 'better_errors'
