@@ -21,4 +21,11 @@ feature 'CSV uploads', type: :feature do
     expect(page).to have_content 'さとう'
     expect(page).to have_content 'しょうゆ'
   end
+
+  scenario '問題のあるCSVをアップロードする' do
+    attach_file 'File', "#{Rails.root}/spec/factories/order_details_error.csv"
+    click_button 'Import'
+    expect(page).to have_content 'Order details unit priceは数値で入力してください。'
+    expect(page).to have_content 'Order details quantityは数値で入力してください。'
+  end
 end
