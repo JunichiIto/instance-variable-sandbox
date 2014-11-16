@@ -1,6 +1,12 @@
 h1 Import CSV
 
 = form_tag order_import_csv_path(@order), multipart: true do
+  - if @order.invalid?
+    .alert.alert-danger
+      p = t('simple_form.error_notification.default_message')
+      ul
+        - @order.errors.full_messages.each do |message|
+          li = message
   .form-inputs
     .form-group
       = label_tag :file, 'File', class: 'control-label'
