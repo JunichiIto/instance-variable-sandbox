@@ -9,6 +9,7 @@ table.table
       th
       th
       th
+      th
 
   tbody
     - @orders.each do |order|
@@ -19,6 +20,7 @@ table.table
         td = link_to 'Show', order
         td = link_to 'Edit', edit_order_path(order)
         td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Import CSV', order_new_csv_path(order)
 
 br
 

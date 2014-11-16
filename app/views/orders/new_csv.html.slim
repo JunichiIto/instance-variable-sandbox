@@ -1,0 +1,12 @@
+h1 Import CSV
+
+= form_tag order_import_csv_path(@order), multipart: true do
+  .form-inputs
+    .form-group
+      = label_tag :file, 'File', class: 'control-label'
+      = file_field_tag :file
+
+  .form-actions
+    = submit_tag 'Import', class: 'btn btn-default'
+
+= link_to 'Back', orders_path

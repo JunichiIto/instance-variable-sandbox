@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :new_csv, :import_csv]
 
   # GET /orders
   # GET /orders.json
@@ -61,10 +61,25 @@ class OrdersController < ApplicationController
     end
   end
 
+  def new_csv
+  end
+
+  def import_csv
+    @order.save_details_from_csv(params[:file])
+    respond_to do |format|
+      if @order.order_details.all?(&:valid?)
+        format.html { redirect_to @order, notice: 'CSV was successfully imported.' }
+      else
+        format.html { render :new_csv }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      id = params[:order_id] || params[:id]
+      @order = Order.find(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
