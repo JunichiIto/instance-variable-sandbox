@@ -6,10 +6,13 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :order_details, allow_destroy: true
   validates :name, :address, presence: true
 
+  def read_csv(csv_file)
+    @csv_text = csv_file.read
+  end
+
   # 参考: http://ayaketan.hatenablog.com/entry/2014/01/26/180141
-  def save_details_from_csv(csv_file)
-    csv_text = csv_file.read
-    CSV.parse(Kconv.toutf8(csv_text)) do |row|
+  def save_details_from_csv
+    CSV.parse(Kconv.toutf8(@csv_text)) do |row|
       # 本来であればカラム数のチェック等を実施すべきだが、サンプルコードなのでここでは割愛する
       self.order_details.create(item_name: row[0], unit_price: row[1], quantity: row[2])
     end
